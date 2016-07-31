@@ -1,0 +1,61 @@
+#include<stdio.h> 
+#include<time.h> 
+#include<stdlib.h> 
+int main()  
+{
+     int mode,end;
+	 printf("  您正在进入剪刀石头布游戏\n");
+     printf("请选择模式\n");
+	 printf(" 1-一局定胜负 2-三局两胜 3-五局三胜\n");
+	 scanf("%d",&mode);
+	 printf("操作说明:\n");
+     printf("  1-剪刀 2-石头 3-布 \n");
+	 int player,com;
+	 int w=0,l=0,p=0;
+	 com=(char)rand()%3+1;
+	 while(1)
+	 {
+	   srand(time(NULL));
+		 printf("你出:\n");
+		 scanf("%d",&player);
+
+		 switch(player)
+		 {
+		   case 1:printf("剪刀 VS ");break;
+			 case 2:printf("石头 VS ");break;
+       case 3:printf("布 VS ");break;
+		 }
+		 
+		 switch(com)
+		 {
+		   case 1:printf("剪刀");break;
+			 case 2:printf("石头");break;
+			 case 3:printf("布");break;
+		 }
+
+		 switch(player-com)
+		 {
+		   case 0:printf("平手\n");p++;break;
+			 case -1:case 2:printf("你输了\n");l++;break;
+			 case -2:case 1:printf("你赢了\n");w++;break;
+		 }
+		 
+		 if(w==mode){
+		     printf("这次你赢了\n");
+		 }
+		 else if(l==mode){
+		     printf("这次你输了\n");	 
+		 }
+		 
+		 if(w==mode||l==mode){
+		     printf("是否继续？\n");
+		     printf("1-是 2-否\n");
+		     scanf("%d",&end);
+		     switch(end)
+			 {
+		         case 1:break;
+			     case 2:printf("感谢参与\n");return 0;
+			 }
+		 }
+	 }
+}
